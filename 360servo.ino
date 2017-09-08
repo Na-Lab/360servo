@@ -19,8 +19,8 @@ void loop() {
 
   myservo.writeMicroseconds(955);
   delay(2000);
-//  myservo.writeMicroseconds(pulse);
-//  delay(2000);
+  myservo.writeMicroseconds(pulse);
+  delay(2000);
 //  
 }
 
