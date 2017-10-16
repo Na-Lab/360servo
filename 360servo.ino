@@ -1,26 +1,24 @@
 #include<Servo.h>
+
+#define PULSE_MIN 955
+#define PULSE_MAX 2000
 Servo myservo;
 
-float pulseMin,pulseMax,pulse_deg,pulse,deg;
+void turn_servo(double deg) {
+  double pulse_deg,pulse;
+  pulse_deg = (PULSE_MAX-PULSE_MIN)/360.0;  /*1度あたり何パルス幅増えるか*/
+  pulse = pulse_deg*deg + PULSE_MIN;  /*degは何パルス幅か*/
+  myservo.writeMicroseconds(pulse);
+}
 
 void setup(){
-  myservo.attach(9,955,2000); /*(pin番号,最小パルス幅,最大パルス幅*/
+  myservo.attach(9,PULSE_MIN,PULSE_MAX); /*(pin番号,最小パルス幅,最大パルス幅*/
 }
 
 void loop() {
-
-  pulseMin = 955; /* パルス幅最小値を360で割る*/
-  pulseMax = 2000;  /* パルス幅最大値を360で割る*/
-
-  pulse_deg = (pulseMax-pulseMin)/360;  /*1度あたり何パルス幅増えるか*/
-
-  deg = 360;  /*ここに何度回すか,deg表記で代入*/
-  pulse = pulse_deg*deg + pulseMin;  /*degは何パルス幅か*/
-
-  myservo.writeMicroseconds(955);
+  turn_servo(0);
   delay(2000);
-  myservo.writeMicroseconds(pulse);
+  turn_servo(90);
   delay(2000);
-  
 }
 
