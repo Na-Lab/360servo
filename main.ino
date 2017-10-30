@@ -8,6 +8,6 @@ void loop()
 {
     turn_servo(0);
     delay(2000);
-    turn_servo(180);
+    turn_servo(90);
     delay(2000);
   }
