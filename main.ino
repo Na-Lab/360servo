@@ -1,13 +1,12 @@
-#include "my_servo.h"
+#include <Arduino.h>
+#include "servo_motor.h"
 
-void setup(){
-    servo_init();
+ServoMotor motor;
+void       setup() { motor.begin(); }
+
+void loop() {
+  motor.turn(0);
+  delay(2000);
+  motor.turn(90);
+  delay(2000);
 }
-
-void loop()
-{
-    turn_servo(0);
-    delay(2000);
-    turn_servo(90);
-    delay(2000);
-  }
